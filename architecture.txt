@@ -1,0 +1,18 @@
+Client (Postman / External App)
+        ↓
+Spring Boot Application
+        ↓
+-----------------------------------
+|  Security Layer                 |
+|  - JWT Auth (for dashboard)    |
+|  - API Key Filter              |
+|  - Rate Limit Filter           |
+-----------------------------------
+        ↓
+Service Layer (Business Logic)
+        ↓
+-----------------------------------
+|  Data Layer                    |
+|  - PostgreSQL (users, plans)   |
+|  - Redis (rate limit buckets)  |
+-----------------------------------
