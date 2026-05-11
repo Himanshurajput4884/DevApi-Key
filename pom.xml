@@ -14,7 +14,7 @@
 	</parent>
 
 	<groupId>com.himanshu.kumar</groupId>
-	<artifactId>DevApi</artifactId>
+	<artifactId>LaughApi</artifactId>
 	<version>1.0.0</version>
 
 	<name>Laugh Api - cache, rate limiting, spring-boot</name>
