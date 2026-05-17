@@ -2,6 +2,7 @@ package com.himanshu.kumar.LaughApi.exception;
 
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -9,6 +10,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import com.himanshu.kumar.LaughApi.dto.ExceptionResponseDto;
+
 
 @Slf4j
 @ControllerAdvice     // -> to apply logic to multiple controller
@@ -22,7 +26,7 @@ public class ExceptionResponseHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ExceptionResponseDto<String>> responseStatusExceptionHandler(final ResponseStatusException exception) {
         logException(exception);
         final var exceptionResponse = new ExceptionResponseDto<>();
-        exceptionResponse.setStatus(exception.getStatusCode().toString);
+        exceptionResponse.setStatus(exception.getStatusCode().toString());
         exceptionResponse.setDescription(exception.getReason());
         return ResponseEntity.status(exception.getStatusCode()).body(exceptionResponse);
     }

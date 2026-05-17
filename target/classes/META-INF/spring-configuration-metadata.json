@@ -1,0 +1,54 @@
+{
+  "groups": [
+    {
+      "name": "com.himanshu.kumar.LaughApi",
+      "type": "com.himanshu.kumar.LaughApi.configuration.OpenApiConfigurationProperties",
+      "sourceType": "com.himanshu.kumar.LaughApi.configuration.OpenApiConfigurationProperties"
+    },
+    {
+      "name": "com.himanshu.kumar.LaughApi.open-a-p-i",
+      "type": "com.himanshu.kumar.LaughApi.configuration.OpenApiConfigurationProperties$OpenAPI",
+      "sourceType": "com.himanshu.kumar.LaughApi.configuration.OpenApiConfigurationProperties",
+      "sourceMethod": "getOpenAPI()"
+    },
+    {
+      "name": "com.himanshu.kumar.LaughApi.token",
+      "type": "com.himanshu.kumar.LaughApi.configuration.TokenConfigurationProperties",
+      "sourceType": "com.himanshu.kumar.LaughApi.configuration.TokenConfigurationProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "com.himanshu.kumar.LaughApi.open-a-p-i.api-version",
+      "type": "java.lang.String",
+      "sourceType": "com.himanshu.kumar.LaughApi.configuration.OpenApiConfigurationProperties$OpenAPI"
+    },
+    {
+      "name": "com.himanshu.kumar.LaughApi.open-a-p-i.description",
+      "type": "java.lang.String",
+      "sourceType": "com.himanshu.kumar.LaughApi.configuration.OpenApiConfigurationProperties$OpenAPI"
+    },
+    {
+      "name": "com.himanshu.kumar.LaughApi.open-a-p-i.enabled",
+      "type": "java.lang.Boolean",
+      "description": "Determines whether Swagger v3 API Documentation and related endpoints are accessible bypassing Authentication and Authorization checks.",
+      "sourceType": "com.himanshu.kumar.LaughApi.configuration.OpenApiConfigurationProperties$OpenAPI"
+    },
+    {
+      "name": "com.himanshu.kumar.LaughApi.open-a-p-i.title",
+      "type": "java.lang.String",
+      "sourceType": "com.himanshu.kumar.LaughApi.configuration.OpenApiConfigurationProperties$OpenAPI"
+    },
+    {
+      "name": "com.himanshu.kumar.LaughApi.token.secret-key",
+      "type": "java.lang.String",
+      "sourceType": "com.himanshu.kumar.LaughApi.configuration.TokenConfigurationProperties"
+    },
+    {
+      "name": "com.himanshu.kumar.LaughApi.token.token-validity-minutes",
+      "type": "java.lang.Integer",
+      "sourceType": "com.himanshu.kumar.LaughApi.configuration.TokenConfigurationProperties"
+    }
+  ],
+  "hints": []
+}
