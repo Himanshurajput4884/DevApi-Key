@@ -25,7 +25,7 @@ public class ExceptionResponseHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<ExceptionResponseDto<String>> responseStatusExceptionHandler(final ResponseStatusException exception) {
         logException(exception);
-        final var exceptionResponse = new ExceptionResponseDto<>();
+        final var exceptionResponse = new ExceptionResponseDto<String>();
         exceptionResponse.setStatus(exception.getStatusCode().toString());
         exceptionResponse.setDescription(exception.getReason());
         return ResponseEntity.status(exception.getStatusCode()).body(exceptionResponse);
@@ -35,7 +35,7 @@ public class ExceptionResponseHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<?> serverExceptionHandler(final Exception exception) {
         logException(exception);
-        final var exceptionResponse = new ExceptionResponseDto<>();
+        final var exceptionResponse = new ExceptionResponseDto<String>();
         exceptionResponse.setStatus(HttpStatus.NOT_IMPLEMENTED.toString());
         exceptionResponse.setDescription("Something went wrong");
         return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).body(exceptionResponse);

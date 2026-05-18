@@ -1,10 +1,10 @@
 package com.himanshu.kumar.LaughApi.configuration;
 
 import com.himanshu.kumar.LaughApi.filter.JwtAuthenticationFilter;
+import com.himanshu.kumar.LaughApi.filter.RateLimitFilter;
 import com.himanshu.kumar.LaughApi.utility.ApiEndpointSecurityInspector;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.apache.catalina.filters.RateLimitFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -36,14 +36,12 @@ public class SecurityConfiguration {
                 .cors(corsConfigurer -> corsConfigurer.configurationSource(corsConfigurationSource()))
                 .csrf(csrfConfigurer -> csrfConfigurer.disable())
                 .sessionManagement(sessionConfigurer -> sessionConfigurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeRequests(authManager -> {
-                    authManager
-                            .requestMatchers(HttpMethod.GET, apiEndpointSecurityInspector.getPublicGetEndpoints().toArray(String[]::new)).permitAll()
-                            .requestMatchers(HttpMethod.POST, apiEndpointSecurityInspector.getPublicPostEndpoints().toArray(String[]::new)).permitAll()
-                            .anyRequest().authenticated();
-                })
-                .addFilter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilter(rateLimitFilter, JwtAuthenticationFilter.class);
+                .authorizeHttpRequests(authManager -> authManager
+                        .requestMatchers(HttpMethod.GET, apiEndpointSecurityInspector.getPublicGetEndpoints().toArray(String[]::new)).permitAll()
+                        .requestMatchers(HttpMethod.POST, apiEndpointSecurityInspector.getPublicPostEndpoints().toArray(String[]::new)).permitAll()
+                        .anyRequest().authenticated())
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(rateLimitFilter, JwtAuthenticationFilter.class);
 
         return http.build();
     }

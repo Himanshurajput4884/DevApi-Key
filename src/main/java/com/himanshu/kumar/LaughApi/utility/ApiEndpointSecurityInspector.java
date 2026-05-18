@@ -85,13 +85,12 @@ public class ApiEndpointSecurityInspector {
      * @return
      */
     private List<String> getUnsecureApiPaths(@NonNull final HttpMethod method) {
-        switch (method) {
-            case HttpMethod.GET:
-                return publicGetEndpoints;
-            case HttpMethod.POST:
-                return publicPostEndpoints;
-            default:
-                return Collections.emptyList();
+        if (HttpMethod.GET.equals(method)) {
+            return publicGetEndpoints;
         }
+        if (HttpMethod.POST.equals(method)) {
+            return publicPostEndpoints;
+        }
+        return Collections.emptyList();
     }
 }

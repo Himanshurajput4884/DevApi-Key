@@ -2,6 +2,7 @@ package com.himanshu.kumar.LaughApi.controller;
 
 import com.himanshu.kumar.LaughApi.dto.ExceptionResponseDto;
 import com.himanshu.kumar.LaughApi.dto.JokeResponseDto;
+import com.himanshu.kumar.LaughApi.utility.JokeGenerator;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.headers.Header;
 import io.swagger.v3.oas.annotations.media.Content;

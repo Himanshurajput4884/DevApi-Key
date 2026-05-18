@@ -3,12 +3,13 @@ package com.himanshu.kumar.LaughApi.filter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.himanshu.kumar.LaughApi.dto.ExceptionResponseDto;
 import com.himanshu.kumar.LaughApi.utility.ApiEndpointSecurityInspector;
+import com.himanshu.kumar.LaughApi.utility.JwtUtility;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -44,8 +45,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if(Boolean.FALSE.equals(unsecuredApiBeingInvoked)) {
             final var authorizationHeader = request.getHeader(AUTHORIZATION_HEADER);
 
-            if (StringUtils.isNotEmpty(authorizationHeader) && authorizationHeader.startsWith(BEARER_PREFIX)) {
-               final var token = authorizationHeader.replace(BEARER_PREFIX, StringUtils.EMPTY);
+            if (StringUtils.hasText(authorizationHeader) && authorizationHeader.startsWith(BEARER_PREFIX)) {
+               final var token = authorizationHeader.replace(BEARER_PREFIX, "");
 
                final var userId = jwtUtility.getUserId(token);
                final var authentication = new UsernamePasswordAuthenticationToken(userId, null, null);
