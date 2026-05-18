@@ -7,6 +7,7 @@ import org.redisson.jcache.configuration.RedissonConfiguration;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.util.StringUtils;
 
 import javax.cache.CacheManager;
 import javax.cache.Caching;
@@ -24,9 +25,12 @@ public class RedisConfiguration {
         final var isCacheCreated = Optional.ofNullable(cacheManager.getCache(CACHE_NAME)).isPresent();
 
         if(Boolean.FALSE.equals(isCacheCreated)) {
-            final var connectionUrl = String.format("redis://%s:%d",  redisProperties.getHost(), redisProperties.getPort());
+            final var connectionUrl = String.format("redis://%s:%d", redisProperties.getHost(), redisProperties.getPort());
             final var configuration = new Config();
-            configuration.useSingleServer().setPassword(redisProperties.getPassword()).setAddress(connectionUrl);
+            final var serverConfig = configuration.useSingleServer().setAddress(connectionUrl);
+            if (StringUtils.hasText(redisProperties.getPassword())) {
+                serverConfig.setPassword(redisProperties.getPassword());
+            }
 
             cacheManager.createCache(CACHE_NAME, RedissonConfiguration.fromConfig(configuration));
         }

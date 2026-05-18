@@ -6,13 +6,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Getter
 @Setter
-@ConfigurationProperties(prefix = "com.himanshu.kumar.LaughApi")
+@ConfigurationProperties(prefix = "com.himanshu.kumar.laugh-api")
 public class OpenApiConfigurationProperties {
-    private OpenAPI openAPI = new OpenAPI();
+    private OpenApiSettings openApi = new OpenApiSettings();
 
     @Getter
     @Setter
-    public class OpenAPI {
+    public static class OpenApiSettings {
 
         /****
          * Determines whether Swagger v3 API Documentation and related endpoints are

@@ -12,7 +12,7 @@ import org.springframework.validation.annotation.Validated;
 @Getter
 @Setter
 @Validated
-@ConfigurationProperties(prefix = "com.himanshu.kumar.LaughApi.token")
+@ConfigurationProperties(prefix = "com.himanshu.kumar.laugh-api.token")
 public class TokenConfigurationProperties {
 
     @NotBlank

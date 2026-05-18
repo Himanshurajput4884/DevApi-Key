@@ -22,7 +22,7 @@ public class OpenApiConfiguration {
 
     @Bean
     public OpenAPI openAPI() {
-        final var properties = openApiConfigurationProperties.getOpenAPI();
+        final var properties = openApiConfigurationProperties.getOpenApi();
         final var info = new Info()
                 .version(properties.getApiVersion())
                 .title(properties.getTitle())
