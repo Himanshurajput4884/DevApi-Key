@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.UUID;
@@ -24,7 +25,7 @@ public class UserCreationRequestDto {
     @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "secure password", example = "password")
     private String password;
 
-    @NotBlank(message = "plan must not be empty")
+    @NotNull(message = "plan must not be null")
     @Schema(requiredMode = Schema.RequiredMode.REQUIRED, description = "Plan to be attached with new user password")
     private UUID planId;
 
