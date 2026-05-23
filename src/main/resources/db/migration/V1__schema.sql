@@ -1,6 +1,6 @@
 CREATE TABLE users
 (
-    id         CHAR(36)     NOT NULL,
+    id         BINARY(16)     NOT NULL,
     email_id   VARCHAR(255) NOT NULL,
     password   VARCHAR(255) NOT NULL,
     created_at DATETIME(6)  NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE users
 
 CREATE TABLE plans
 (
-    id              CHAR(36)     NOT NULL,
+    id              BINARY(16)     NOT NULL,
     name            VARCHAR(255) NOT NULL,
     limit_per_hour  INT          NOT NULL,
     create_at       DATETIME(6)  NOT NULL,
@@ -22,9 +22,9 @@ CREATE TABLE plans
 
 CREATE TABLE user_plan_mappings
 (
-    id         CHAR(36)    NOT NULL,
-    user_id    CHAR(36)    NULL,
-    plan_id    CHAR(36)    NULL,
+    id         BINARY(16)    NOT NULL,
+    user_id    BINARY(16)    NULL,
+    plan_id    BINARY(16)    NULL,
     is_active  TINYINT(1)  NOT NULL,
     created_at DATETIME(6) NOT NULL,
     updated_at DATETIME(6) NOT NULL,
