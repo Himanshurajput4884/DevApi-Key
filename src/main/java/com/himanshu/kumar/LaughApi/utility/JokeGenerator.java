@@ -10,18 +10,17 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class JokeGenerator {
-    private final Joke joke;
 
-    public JokeGenerator(final Joke joke) {
-        this.joke = new Faker().joke();
-    }
+    private final Joke joke = new Faker().joke();
 
     /**
      * Generates a random joke.
-     * @return
      */
     public JokeResponseDto generate() {
         final var pun = joke.pun();
-        return JokeResponseDto.builder().joke(pun).build();
+
+        return JokeResponseDto.builder()
+                .joke(pun)
+                .build();
     }
 }
