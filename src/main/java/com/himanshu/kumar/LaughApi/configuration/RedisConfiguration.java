@@ -28,6 +28,10 @@ public class RedisConfiguration {
             final var connectionUrl = String.format("redis://%s:%d", redisProperties.getHost(), redisProperties.getPort());
             final var configuration = new Config();
             final var serverConfig = configuration.useSingleServer().setAddress(connectionUrl);
+            if (StringUtils.hasText(redisProperties.getUsername())) {
+                serverConfig.setUsername(redisProperties.getUsername());
+            }
+
             if (StringUtils.hasText(redisProperties.getPassword())) {
                 serverConfig.setPassword(redisProperties.getPassword());
             }
